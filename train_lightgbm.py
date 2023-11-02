@@ -11,7 +11,7 @@ warnings.simplefilter('ignore')
 def load_and_train_model(train_data_path, test_data_path):
     # Load train data
     train_data = pd.read_csv(train_data_path)
-    st.write(train_data)
+    
     # Load test data
     test_data = pd.read_csv(test_data_path)
 
@@ -64,7 +64,7 @@ def load_and_train_model(train_data_path, test_data_path):
     
     return test_data
     '''
-    return 0
+    return train_data
 
 # Streamlit UI elements
 st.title('DontGetKicked Prediction App')
