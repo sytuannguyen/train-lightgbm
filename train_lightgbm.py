@@ -1,4 +1,4 @@
-!pip install streamlit pandas numpy scikit-learn lightgbm
+pip install streamlit pandas numpy scikit-learn lightgbm
 
 import streamlit as st
 import pandas as pd
