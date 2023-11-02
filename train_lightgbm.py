@@ -11,7 +11,7 @@ warnings.simplefilter('ignore')
 def load_and_train_model(train_data_path, test_data_path):
     # Load train data
     train_data = pd.read_csv(train_data_path)
-
+    st.write(train_data)
     # Load test data
     test_data = pd.read_csv(test_data_path)
 
@@ -19,7 +19,7 @@ def load_and_train_model(train_data_path, test_data_path):
     features = ['VehYear', 'VehicleAge', 'WheelTypeID', 'VehOdo', 'MMRAcquisitionAuctionAveragePrice', 'MMRCurrentAuctionAveragePrice',
                 'MMRAcquisitionAuctionCleanPrice', 'MMRCurrentAuctionCleanPrice', 'VehBCost', 'WarrantyCost']
     target = 'IsBadBuy'
-
+    '''
     # Initialize Stratified K-Fold
     num_folds = 5
     kf = StratifiedKFold(n_splits=num_folds, random_state=42, shuffle=True)
@@ -61,7 +61,10 @@ def load_and_train_model(train_data_path, test_data_path):
 
     # Add predictions to the test_data DataFrame
     test_data['IsBadBuy'] = test_predictions
+    
     return test_data
+    '''
+    return 0
 
 # Streamlit UI elements
 st.title('DontGetKicked Prediction App')
