@@ -52,9 +52,9 @@ def load_and_train_model(train_data_path, test_data_path):
 
         # Train LightGBM model
         num_round = 10000
-        early_stopping_rounds = 100
+        #early_stopping_rounds = 100
         bst = lgb.train(params, train_data_lgb, num_round, valid_sets=[valid_data_lgb],
-                        early_stopping_rounds=early_stopping_rounds, verbose_eval=False)
+                        verbose_eval=False)
 
         # Make predictions on the test set for this fold
         test_predictions += bst.predict(test_data[features]) / num_folds
