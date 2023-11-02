@@ -7,7 +7,7 @@ import warnings
 warnings.simplefilter('ignore')
 
 # Function to load data and train the model
-@st.cache
+@st.cache(suppress_st_warning=True)
 def load_and_train_model(train_data_path, test_data_path):
     # Load train data
     train_data = pd.read_csv(train_data_path)
