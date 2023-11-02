@@ -19,7 +19,7 @@ def load_and_train_model(train_data_path, test_data_path):
     features = ['VehYear', 'VehicleAge', 'WheelTypeID', 'VehOdo', 'MMRAcquisitionAuctionAveragePrice', 'MMRCurrentAuctionAveragePrice',
                 'MMRAcquisitionAuctionCleanPrice', 'MMRCurrentAuctionCleanPrice', 'VehBCost', 'WarrantyCost']
     target = 'IsBadBuy'
-    '''
+    
     # Initialize Stratified K-Fold
     num_folds = 5
     kf = StratifiedKFold(n_splits=num_folds, random_state=42, shuffle=True)
@@ -52,19 +52,17 @@ def load_and_train_model(train_data_path, test_data_path):
 
         # Train LightGBM model
         num_round = 10000
-        #early_stopping_rounds = 100
-        bst = lgb.train(params, train_data_lgb, num_round, valid_sets=[valid_data_lgb],
-                        verbose_eval=False)
+        early_stopping_rounds = 100
+        model = lgb.LGBMClassifier(**params)
+        model.train(params, train_data_lgb, num_round, valid_sets=[valid_data_lgb])
 
         # Make predictions on the test set for this fold
         test_predictions += bst.predict(test_data[features]) / num_folds
 
     # Add predictions to the test_data DataFrame
     test_data['IsBadBuy'] = test_predictions
-    
+
     return test_data
-    '''
-    return train_data
 
 # Streamlit UI elements
 st.title('DontGetKicked Prediction App')
